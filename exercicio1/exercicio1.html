@@ -1,0 +1,46 @@
+<html>
+<head>
+
+<style>
+	table, td, th {
+		border: 1px solid black;
+		border-collapse: collapse;
+	}
+	table td, table th {
+		padding: 0px 5px 0px 5px;
+	}
+	table tr th{
+		font-weight: bold;
+		font-size: 20pt;
+	}
+</style>
+
+<script src="../lib/jquery-1.10.2.min.js"></script>
+<!--<script type="text/javascript" src="scriptComClosure.js" async></script>-->
+<script type="text/javascript" src="scriptComPrototype.js" async></script>
+</head>
+
+<body>
+<div>
+	<div>
+		Usuario: <input type="text" id="user" value="freedomsponsors">
+	</div>
+	<div>
+		Repositorio: <input type="text" id="repo-name" value="www.freedomsponsors.org" />
+	</div>
+	<div>
+		<button onclick="buscarIssues()">Buscar Issues</button>
+	</div>
+</div>
+
+<div class="table">
+	<table id="issues-table">
+	    <tr>
+	    	<th>Numero</th>
+	    	<th>Titulo</th>
+	    </tr>
+	</table>
+</div>
+</body>
+
+</html>
