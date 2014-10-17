@@ -8,6 +8,8 @@ function lifeController($scope, $timeout) {
 	$scope.columns = 50;
 	$scope.iterations = 0;
 
+	var minimumInterval = 50;
+
 	function getNewGrid() {
 		var lifeGrid = [];
 		for(var i = 0; i < $scope.rows; i++) {
@@ -94,7 +96,7 @@ function lifeController($scope, $timeout) {
 		if(modifiedRows || modifiedColumns) {
 			$scope.lifeGrid = getNewGrid();
 		}
-		$scope.interval = ($scope.intervalNumber >= 500) ? $scope.intervalNumber : 500;
+		$scope.interval = ($scope.intervalNumber >= minimumInterval) ? $scope.intervalNumber : 500;
 		alert('Linhas: ' + $scope.rows + '\nColunas: ' + $scope.columns + '\nIntervalo(ms): ' + $scope.interval);
 	};
 
@@ -104,7 +106,7 @@ function lifeController($scope, $timeout) {
 	};
 
 	$scope.autoStep = function() {
-		if($scope.interval >= 500) {
+		if($scope.interval >= minimumInterval) {
 			$scope.step();
 			$scope.timer = $timeout($scope.autoStep, $scope.interval);
 		}
@@ -114,7 +116,7 @@ function lifeController($scope, $timeout) {
 		if($scope.timer != null) {
 			$timeout.cancel($scope.timer);
 		}
-		if($scope.interval >= 500) {
+		if($scope.interval >= minimumInterval) {
 			$scope.step();
 			$scope.timer = $timeout(function() {
 				$scope.autoStep();
