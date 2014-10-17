@@ -1,0 +1,56 @@
+<html>
+
+<head>
+<link rel="stylesheet" href="life.css">
+<script src="../lib/angular.min.js"></script>
+<script src="angularLife.js"></script>
+</head>
+
+<body ng-app="life" ng-controller="lifeController">
+	<h1>
+		AngulifeJS
+	</h1>
+	<fieldset class="divisao">
+		<div class="gridConfig">
+			<div class="numberInput">
+				<span>Numero de linhas: </span>
+				<input type="number" ng-model="rowNumber"></input>
+			</div>
+			<div class="numberInput">
+				<span>Numero de colunas: </span>
+				<input type="number" ng-model="columnNumber"></input>
+			</div>
+			<div class="numberInput">
+				<span>Intervalo de Tempo da iteracao auto(ms): </span>
+				<input type="number" ng-model="intervalNumber"></input>
+			</div>
+			<button ng-click="set()">
+				SET
+			</button>
+		</div>
+
+		<table ng-model="lifeGrid">
+			<tr ng-repeat="row in lifeGrid track by $index" 
+				ng-init="rowIndex = $index">
+				<td ng-repeat="cell in row track by $index" 
+					ng-init="columnIndex = $index" 
+					ng-class="{'alive': cell}"
+					ng-click="toggleState(rowIndex, columnIndex)">
+				</td>
+			</tr>
+		</table>
+
+		<fieldset class="display-iterations">
+			Iterations: {[{iterations}]}
+		</fieldset>
+
+		<fieldset class="buttons">
+			<button ng-click="reset()">Reset</button>
+			<button ng-click="step()">Step</button>
+			<button ng-click="auto()">Auto</button>
+			<button ng-click="stopAuto()" style="width: 120px;">Stop Auto</button>
+		</fieldset>
+	</fieldset>
+</body>
+
+</html>

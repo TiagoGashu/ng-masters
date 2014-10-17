@@ -1,0 +1,71 @@
+.gridConfig {
+	font-size: 24px;
+	width: 60%;
+	margin: 10 auto 10 auto;
+	text-align: center;
+}
+.numberInput {
+	margin: 11px;
+	display: block;
+}
+.numberInput span{
+	
+}
+.numberInput input{
+	height: 32px;
+	width: 100px;
+	float: right;
+}
+h1 {
+	text-align: center;
+	font-family: sans-serif;
+	color: darkgray;
+}
+fieldset {
+	border-radius: 10px;
+	border-width: 4px;
+	border-style: solid;
+}
+.divisao{
+	position: relative;
+	width: 45%;
+	margin-left: auto;
+	margin-right: auto;
+}
+table {
+	margin-left: auto;
+	margin-right: auto;
+}
+td {
+	background-color: black;
+	color: white;
+	white-space: nowrap;
+	height: 15px;
+	width: 15px;
+}
+td.alive {
+	background-color: green;
+}
+.display-iterations {
+	width: 100px;
+	font-size: 20pt;
+	top: 6em;
+	position: absolute;
+	right: 23px;
+}
+.buttons {
+	margin-top: 10px;
+	display: inline-block;
+	position: relative;
+	height: 68px;
+	width: 34%;
+	left: 31%;
+}
+.buttons button {
+	height: 50px;
+	width: 100px;
+	margin-top: 10;
+	font-family: sans-serif;
+	font-size: larger;
+	font-weight: bold;
+}
