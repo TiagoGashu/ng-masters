@@ -1,0 +1,41 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="css/alertas.css">
+		<script src="../lib/angular.min.js"></script>
+		<script src="js/alertas.js"></script>
+		
+		<script>
+			angular.module('myapp', ['alertas']);
+			angular.module('myapp').controller('MyCtrl', function($scope, AlertasFactory){
+				$scope.showAlert = function() {
+					AlertasFactory.showAlert('Loading...');
+				}
+
+				$scope.showAlertThreeSec = function() {
+					AlertasFactory.showAlert('Loading...For 3 seconds...', {timeout: 3000});
+				}
+
+				$scope.showError = function() {
+					AlertasFactory.showErrorPopup('Error!', 'Goddamnit! :/');
+				}
+
+				$scope.ShowTimeoutError = function() {
+					AlertasFactory.showErrorPopup('Error!', 'Nao se preocupe! So por 3 seg... :D', {timeout: 3000});
+				}
+			});
+		</script>
+	</head>
+
+	<body ng-app="myapp" ng-controller="MyCtrl" style="margin-top: 50px">
+		<h1 style="text-align: center;">P&aacute;gina de teste da diretiva e do servi&ccedil;o Alertas</h1>
+
+		<div style="position: relative; text-align: center;">
+			<alertas><!-- --></alertas>
+			<button ng-click="showAlert()">Alert</button>
+			<button ng-click="showAlertThreeSec()">Alert 3s</button>
+			<button ng-click="showError()">Error Popup</button>
+			<button ng-click="ShowTimeoutError()">Error Popup com timeout</button>
+		</div>
+
+	</body>
+</html>

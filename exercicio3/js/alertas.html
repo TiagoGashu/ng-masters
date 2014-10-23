@@ -1,0 +1,13 @@
+<div ng-show="model.shouldShowAlert" class="alertas-alert">
+	{{model.alertMessage}}
+</div>
+<div ng-show="model.shouldShowError" class="opacity-bg"></div>
+<div ng-show="model.shouldShowError" class="alertas-error-popup">
+	<div class="alertas-error-title">
+		<span class="alertas-error-innertitle">{{model.errorTitle}}</span><span ng-show="!model.isTimeoutError" ng-click="closeErrorPopup()" class="alertas-error-close-button"></span>
+	</div>
+	<div class="alertas-error-content">
+		{{model.errorMessage}}
+	</div>
+	<button ng-show="!model.isTimeoutError" ng-click="closeErrorPopup()" class="alertas-error-ok">OK</button>
+</div>
