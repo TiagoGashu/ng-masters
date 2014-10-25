@@ -13,24 +13,20 @@ alertModule.factory('AlertasFactory', ['$timeout', function($timeout){
 		alertTimeout: 1000
 	};
 
-	function executeTimeout(alertas, type) {
-		var timeout;
-		if(type == 'alert') {
-			timeout = alertas.alertTimeout;
-		}
-		else if(type == 'popupError') {
-			timeout = alertas.errorTimeout;
-		}
+	function resetAlert(alertas) {
+		alertas.shouldShowAlert = false;
+		alertas.alertTimeout = 1000;
+	}
+
+	function resetError(alertas) {
+		alertas.shouldShowError = false;
+		alertas.errorTimeout = null;
+		alertas.isTimeoutError = false;
+	}
+
+	function executeTimeout(alertas, timeout, resetCallback) {
 		$timeout(function(){
-			if(type == 'alert') {
-				alertas.shouldShowAlert = false;
-				alertas.alertTimeout = 1000;
-			}
-			else if(type == 'popupError') {
-				alertas.shouldShowError = false;
-				alertas.errorTimeout = null;
-				alertas.isTimeoutError = false;
-			}
+			resetCallback(alertas);
 		}, timeout);
 	}
 
@@ -44,7 +40,7 @@ alertModule.factory('AlertasFactory', ['$timeout', function($timeout){
 		this.alertMessage = msg;
 		this.shouldShowAlert = true;
 		
-		executeTimeout(this, 'alert')
+		executeTimeout(this, this.alertTimeout, resetAlert);
 	};
 
 	alertas.showErrorPopup = function(title, content, options) {
@@ -60,7 +56,7 @@ alertModule.factory('AlertasFactory', ['$timeout', function($timeout){
 		if(this.errorTimeout) {
 			// seta esta propriedade para esconder o botao de close e o OK
 			this.isTimeoutError = true;
-			executeTimeout(this, 'popupError')
+			executeTimeout(this, this.errorTimeout, resetError);
 		}
 	}
 
